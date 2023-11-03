@@ -1,0 +1,53 @@
+:root {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: grid;
+  grid-template: auto auto / 1fr 4fr;
+}
+
+.library {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.book {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  min-height: 150px;
+  padding: 5px;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5em;
+  padding-bottom: .5em;
+}
+
+.author {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.pages {
+  text-align: center;
+}
