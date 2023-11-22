@@ -71,7 +71,7 @@ function displayLibrary() {
 
     //add button to toggle read status
     const toggle = document.createElement('button');
-    toggle.innerText = record.read ? 'Not read' : 'Read';
+    toggle.innerText = record.read ? 'Read' : 'Not read';
     toggle.classList.add('toggle');
     toggle.addEventListener('click', function() {
       record.read ? record.read = false : record.read = true;
@@ -102,7 +102,7 @@ function newBook(event) {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
-  const read = document.querySelector('input[name="read"]:checked').value === 'yes'
+  const read = document.querySelector('input[name="read"]:checked').id === 'yes'
 
   const newBook = new Book(title, author, pages, read);
   addBookToLibrary(newBook);
