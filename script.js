@@ -25,8 +25,17 @@ addBookToLibrary(execOrders);
 const disciples = new Book("Disciples Who Will Last", "Tim Hawkins", 208, true);
 addBookToLibrary(disciples);
 
+//add id property based on array postion
+function addId(arr) {
+  for (let i=0; i < arr.length; i++) {
+    arr[i].id = i;
+  }
+}
+
 //display library
 function displayLibrary() {
+  addId(myLibrary);
+
   const library = document.querySelector('.library');
 
   var child = library.lastElementChild;
@@ -38,24 +47,48 @@ function displayLibrary() {
   myLibrary.forEach((record) => {
     const book = document.createElement('div');
     book.classList.add('book');
+    if (record.read) {
+      book.classList.add('read');
+    }
+
     const title = document.createElement('div');
     title.classList.add('title');
     const author = document.createElement('div');
     author.classList.add('author');
     const pages = document.createElement('div');
     pages.classList.add('pages');
-    const read = document.createElement('div');
-    read.classList.add('read');
+    const buttons = document.createElement('div');
+    buttons.classList.add('btns');
+    
+    //add button to remove book from library
+    const remove = document.createElement('button');
+    remove.innerText = 'Remove book';
+    remove.setAttribute('class', 'remove');
+    remove.addEventListener('click', function() {
+      myLibrary.splice(record.id, 1);
+      displayLibrary();
+    });
+
+    //add button to toggle read status
+    const toggle = document.createElement('button');
+    toggle.innerText = record.read ? 'Not read' : 'Read';
+    toggle.classList.add('toggle');
+    toggle.addEventListener('click', function() {
+      record.read ? record.read = false : record.read = true;
+      displayLibrary();
+    });
     
     title.textContent = record.title;
     author.textContent = `by ${record.author}`;
     pages.textContent = `${record.pages} pages`;
-    read.textContent = record.read;
 
+    buttons.appendChild(remove);
+    buttons.appendChild(toggle);
     book.appendChild(title);
     book.appendChild(author);
     book.appendChild(pages);
-    book.appendChild(read);
+    book.appendChild(buttons);
+
     library.appendChild(book);
   });
 };

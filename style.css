@@ -35,6 +35,8 @@ main {
   align-content: center;
   min-height: 150px;
   padding: 5px;
+  position: relative;
+  background: palevioletred;
 }
 
 .title {
@@ -50,4 +52,13 @@ main {
 
 .pages {
   text-align: center;
+}
+
+.btns {
+  position: absolute;
+  bottom: 5px;
+}
+
+.read {
+  background-color: lightgreen;
 }
